@@ -1,0 +1,27 @@
+<app-header [isActive]="true" [integration]="detailsData$"></app-header>
+
+<span *ngIf="detailState$ | async; else loading">
+  <div class="info">
+    <div class="header">
+      <h1>Wersja główna</h1>
+    </div>
+    <div class="underline"></div>
+    <div class="switches">
+      <button>Wersja</button>
+      <button>Wersja</button>
+      <button>Wersja</button>
+      <button>Wersja</button>
+    </div>
+  </div>
+  <div class="underline"></div>
+</span>
+
+<ng-template #loading>
+  <div class="container">
+    <div class="lds-facebook">
+      <div></div>
+      <div></div>
+      <div></div>
+    </div>
+  </div>
+</ng-template>

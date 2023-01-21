@@ -1,0 +1,19 @@
+#dashboard {
+    flex: 1 1 auto;
+    display: flex;
+    flex-direction: column;
+}
+
+app-dashboard {
+    flex: 1 1 auto;
+    display: flex;
+    flex-direction: column;
+}
+
+#no-connection {
+    flex: 1 1 auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}

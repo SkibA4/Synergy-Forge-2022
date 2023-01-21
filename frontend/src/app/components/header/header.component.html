@@ -1,0 +1,21 @@
+<header>
+  <div class="header-container">
+    <a href="/">
+      <img src="../../../assets/logo.png" alt="LOGO" id="logo-img" />
+    </a>
+    <div class="name">
+      <div *ngIf="isActive && integration.value.imgUrl">
+        <img [src]="integration.value.imgUrl" class="image"/>
+      </div>
+      <div *ngIf="isActive && !integration.value.imgUrl">
+        <img src="../../../assets/default.png" class="image"/>
+      </div>
+      <h1 *ngIf="isActive">{{ integration.value.name }}</h1>
+    </div>
+    <div *ngIf="isActive">
+      <app-save-button buttonType="Wstecz"></app-save-button>
+      <app-save-button buttonType="Zapisz"></app-save-button>
+    </div>
+  </div>
+</header>
+

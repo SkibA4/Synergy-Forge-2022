@@ -1,0 +1,34 @@
+<app-header></app-header>
+<div
+  *ngIf="getBackendState() | async; else noConnection"
+  id="dashboard"
+  class="container"
+>
+  <span *ngIf="integrations$ | async; else loading">
+    <div class="tile-wrapper">
+      <app-tile
+        *ngFor="let i of getIntegrationsData()"
+        [integration]="i"
+        [ind]="i.id"
+        (delete)="deleteIntegration($event)"
+        class="tile"
+        (click)="navigateToDetails(i.id)"
+      ></app-tile>
+      <a href="/new"><button type="button" id="button">+</button></a>
+    </div>
+  </span>
+</div>
+
+<ng-template #loading>
+  <div class="lds-facebook">
+    <div></div>
+    <div></div>
+    <div></div>
+  </div>
+</ng-template>
+
+<ng-template #noConnection>
+  <div id="no-connection">
+    <h1>Brak połączenia z serwerem</h1>
+  </div>
+</ng-template>

@@ -1,0 +1,40 @@
+<form [formGroup]="categoryForm" class="new-category">
+  <h2>Nowa kategoria</h2>
+  <div class="fields">
+    <mat-form-field appearance="fill">
+      <mat-label>Nazwa</mat-label>
+      <input matInput placeholder="Podaj nazwę" formControlName="name" />
+    </mat-form-field>
+
+    <mat-form-field appearance="fill">
+      <mat-label>Kwota</mat-label>
+      <input
+        matInput
+        placeholder="Podaj kwotę"
+        formControlName="cost"
+        type="number"
+        (keyup)="onCostChange($event)"
+      />
+    </mat-form-field>
+
+    <mat-form-field appearance="fill">
+      <mat-label>Procent</mat-label>
+      <input
+        matInput
+        placeholder="Podaj procent kwoty"
+        formControlName="procent"
+        type="number"
+        (keyup)="onProcentChange($event)"
+      />
+    </mat-form-field>
+  </div>
+
+  <button
+    class="add"
+    type="button"
+    [disabled]="!categoryForm.valid"
+    (click)="onSubmit()"
+  >
+    Dodaj
+  </button>
+</form>

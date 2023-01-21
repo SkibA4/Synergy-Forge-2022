@@ -1,0 +1,126 @@
+<app-header></app-header>
+
+<form [formGroup]="integrationForm" (ngSubmit)="onSubmit()" class="new-form">
+  <div class="left">
+    <h1>Nowy budżet</h1>
+    <div class="mainInfo" formGroupName="budgets">
+      <mat-form-field appearance="fill" class="mat-input">
+        <mat-label>Nazwa budżetu</mat-label>
+        <input
+          matInput
+          placeholder="Wpisz nazwę budżetu"
+          formControlName="name"
+        />
+      </mat-form-field>
+
+      <mat-form-field appearance="fill">
+        <mat-label>Planowany budżet (zł)</mat-label>
+        <input
+          matInput
+          placeholder="Wpisz budżet"
+          formControlName="cost"
+          type="number"
+          (keyup)="costChange($event)"
+        />
+      </mat-form-field>
+
+      <mat-form-field appearance="fill">
+        <mat-label>Planowana liczba osób</mat-label>
+        <input
+          matInput
+          placeholder="Wpisz liczbę osób"
+          formControlName="peopleCount"
+          type="number"
+        />
+      </mat-form-field>
+    </div>
+    <h1>Widok kategorii</h1>
+    <div class="categories">
+      <table mat-table [dataSource]="dataSource">
+        <ng-container matColumnDef="kategoria">
+          <th mat-header-cell *matHeaderCellDef>Kategoria</th>
+          <td mat-cell *matCellDef="let element">{{ element.value.name }}</td>
+        </ng-container>
+
+        <ng-container matColumnDef="koszt">
+          <th mat-header-cell *matHeaderCellDef>Koszt</th>
+          <td mat-cell *matCellDef="let element; let i = index">
+            {{ element.value.cost }}
+          </td>
+        </ng-container>
+
+        <ng-container matColumnDef="procent">
+          <th mat-header-cell *matHeaderCellDef>Procent</th>
+          <td mat-cell *matCellDef="let element; let i = index">
+            {{ element.value.procent }}
+          </td>
+        </ng-container>
+
+        <ng-container matColumnDef="delete">
+          <th mat-header-cell *matHeaderCellDef></th>
+          <td mat-cell *matCellDef="let i = index">
+            <button mat-button type="button" (click)="deleteCategory(i)">
+              <mat-icon>delete</mat-icon>
+            </button>
+          </td>
+        </ng-container>
+
+        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+      </table>
+
+      <app-new-category
+        *ngIf="categoryFormState"
+        (addCategory)="addCategory($event)"
+        (formState)="setCategoryFormState()"
+        [cost$]="cost$"
+        [integrationCost]="cost"
+      ></app-new-category>
+
+      <div class="add-category" (click)="setCategoryFormState()">
+        <button type="button" class="add-new">+</button>
+        <p>Dodaj nową kategorię</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="right">
+    <div class="info-photo">
+      <h1>Info & photo</h1>
+      <mat-form-field appearance="fill">
+        <mat-label>Nazwa integracji</mat-label>
+        <input
+          matInput
+          placeholder="Wpisz nazwę integracji"
+          formControlName="name"
+        />
+      </mat-form-field>
+
+      <mat-form-field appearance="fill">
+        <mat-label>Link do zdjęcia</mat-label>
+        <input
+          matInput
+          placeholder="Podaj link do zdjęcia"
+          formControlName="imgUrl"
+        />
+      </mat-form-field>
+    </div>
+  </div>
+</form>
+
+<div class="footer-buttons">
+  <a href="">
+    <button type="button">
+      <mat-icon>arrow_back</mat-icon>
+      Wstecz
+    </button>
+  </a>
+  <button
+    type="button"
+    (click)="onSubmit()"
+    [disabled]="!integrationForm.valid"
+  >
+    Stwórz
+    <mat-icon>arrow_forward</mat-icon>
+  </button>
+</div>
