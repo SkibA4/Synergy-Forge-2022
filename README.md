@@ -9,3 +9,5 @@
 - Hibernate ORM v5.6.14
 - PostgreSQL v15.1
 - Docker (in progress...)
+# Run:
+## In progress... :)
