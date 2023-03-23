@@ -5,11 +5,10 @@ import { MakeRequestService } from 'src/app/services/make-request.service';
 @Component({
   selector: 'app-tile',
   templateUrl: './tile.component.html',
-  styleUrls: ['./tile.component.scss']
+  styleUrls: ['./tile.component.scss'],
 })
 export class TileComponent {
-
-  constructor(private requestService: MakeRequestService) { }
+  constructor(private requestService: MakeRequestService) {}
 
   @Input() integration!: Integrations;
   @Input() ind!: number;

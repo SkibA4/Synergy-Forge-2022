@@ -1,28 +1,25 @@
-interface Subcategory {
-    id: string,
-    name: string,
-    cost: number
+export interface Subcategory {
+  name: string;
+  cost: number;
 }
 
-interface Category {
-    id: string,
-    name: string,
-    cost: number,
-    subcategories: Subcategory[]
+export interface Category {
+  name: string;
+  cost: number;
+  subcategories: Subcategory[];
 }
 
-interface Budget {
-    id: string,
-    name: string,
-    cost: number,
-    peopleCount: number,
-    mainBudget: boolean,
-    categories: Category[]
+export interface Budget {
+  name: string;
+  cost: number;
+  peopleCount: number;
+  mainBudget: boolean;
+  categories: Category[];
 }
 
 export interface Integration {
-    id: string,
-    name: string,
-    imgUrl: string,
-    budgets: Budget[]
+  id: number;
+  name: string;
+  imgUrl: string;
+  budgets: Budget[];
 }

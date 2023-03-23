@@ -9,29 +9,28 @@ const routes: Routes = [
   {
     path: '',
     redirectTo: 'integrations',
-    pathMatch: 'full'
+    pathMatch: 'full',
   },
   {
     path: 'integrations',
-    component: DashboardComponent
+    component: DashboardComponent,
   },
   {
     path: 'new',
-    component: NewComponent
+    component: NewComponent,
   },
   {
     path: 'details/:id',
-    component: DetailsComponent
+    component: DetailsComponent,
   },
   {
     path: '**',
     component: NotfoundComponent,
-  }
-
+  },
 ];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
-  exports: [RouterModule]
+  exports: [RouterModule],
 })
-export class AppRoutingModule { }
+export class AppRoutingModule {}

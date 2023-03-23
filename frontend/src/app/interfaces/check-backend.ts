@@ -1,3 +1,3 @@
 export interface CheckBackend {
-    response: string;
+  response: string;
 }

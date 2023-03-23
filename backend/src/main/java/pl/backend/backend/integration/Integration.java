@@ -4,6 +4,7 @@ import lombok.*;
 import pl.backend.backend.budget.Budget;
 
 import javax.persistence.*;
+import java.util.ArrayList;
 import java.util.List;
 
 @Entity
@@ -24,6 +25,6 @@ public class Integration {
 
     @OneToMany(cascade = CascadeType.ALL)
     @JoinColumn(name = "integration_id")
-    private List<Budget> budgets;
+    private List<Budget> budgets = new ArrayList<>();
 
 }

@@ -1,8 +1,17 @@
 <div class="tile-container">
-    <img *ngIf="integration.imgUrl" [src]="integration.imgUrl" class="image" alt="img"/>
-    <img *ngIf="!integration.imgUrl" src="../../../assets/default.png" class="image" alt="img"/>
-    <div id="description">
-        {{ integration.name }}
-    </div>
-    <button (click)="deleteIntegration(ind)">Usuń</button>
+  <img
+    *ngIf="integration.imgUrl"
+    [src]="integration.imgUrl"
+    class="image"
+    alt="img"
+  />
+  <img
+    *ngIf="!integration.imgUrl"
+    src="../../../assets/default.png"
+    class="image"
+    alt="img"
+  />
+  <div id="description">
+    {{ integration.name }}
+  </div>
 </div>

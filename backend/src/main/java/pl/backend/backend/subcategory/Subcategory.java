@@ -1,5 +1,6 @@
 package pl.backend.backend.subcategory;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.*;
 
 import javax.persistence.Entity;
@@ -17,6 +18,7 @@ public class Subcategory {
 
     @Id
     @GeneratedValue
+    @JsonIgnore
     private UUID id;
 
     private String name;

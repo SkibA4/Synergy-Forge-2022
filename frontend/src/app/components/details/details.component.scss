@@ -1,101 +1,124 @@
-.info {
-    margin-top: 35px;
-    display: flex;
-    width: 100%;
+@import "../../app.component.scss";
 
-    .header {
-        width: 50%;
-
-        h1 {
-            color: #785BAF;
-            font-size: 32px;
-            font-weight: 500;
-            margin-left: 10%;
-            margin-bottom: 5px;
-        }
-    }
-
-    .switches {
-        width: 50%;
-        display: flex;
-        justify-content: left;
-        align-self: flex-end;
-    }
-
-    .underline {
-        display: none;
-    }
+.container {
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
 }
 
-.underline {
+.saved {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 1.5rem;
+  margin: auto;
+  width: 300px;
+  height: 50px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #efeaf5;
+  border: 2px solid #785baf;
+  border-radius: 10px;
+  font-size: 20px;
+  color: #6542a5;
+
+  p {
+    margin: 0;
+  }
+
+  transition: 0.8s;
+}
+
+.saved-disable {
+  top: -100%;
+}
+
+.versions {
+  margin-top: 35px;
+  display: flex;
+  width: 100%;
+  flex-grow: 1;
+
+  &__main {
+    width: 50%;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+  }
+
+  &__header {
+    h1 {
+      color: #785baf;
+      font-size: 32px;
+      font-weight: 500;
+      margin-left: 10%;
+      margin-bottom: 5px;
+    }
+  }
+
+  &__others {
+    width: 50%;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+
+    .versions__content {
+      background-color: #efeaf5;
+      flex-grow: 1;
+    }
+  }
+
+  &__underline {
     width: 100%;
     height: 2px;
-    background-color: #EFEAF5;
+    background-color: #efeaf5;
+    margin-top: 3px;
+  }
+
+  &__switches {
+    overflow-x: scroll;
+    display: flex;
+    flex-wrap: nowrap;
+  }
+
+  &__switch,
+  &__switch--active {
+    min-width: 100px;
+    height: 40px;
+    border: none;
+    background-color: #fff;
+    cursor: pointer;
+    border-left: 1px solid #efeaf5;
+    padding: 0 10px;
+  }
+
+  &__switch--active {
+    background-color: #efeaf5;
+    cursor: auto;
+  }
 }
 
 @media only screen and (max-width: 768px) {
-    .info {
-        display: flex;
-        flex-direction: column;
+  .versions {
+    flex-direction: column;
 
-        .header {
-            width: 100%;
-            display: flex;
-            justify-content: center;
-        }
-
-        .switches {
-            width: 100%;
-        }
-
-        .underline {
-            display: block;
-        }
+    &__main {
+      width: 100%;
     }
+
+    &__others {
+      width: 100%;
+    }
+  }
 }
 
-///////// ng-template /////////
-.container {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-grow: 1;
-}
+@include loading;
 
-// Loading 
-.lds-facebook {
-    display: inline-block;
-    position: relative;
-    width: 80px;
-    height: 80px;
-  }
-  .lds-facebook div {
-    display: inline-block;
-    position: absolute;
-    left: 8px;
-    width: 16px;
-    background: #785BAF;
-    animation: lds-facebook 1.2s cubic-bezier(0, 0.5, 0.5, 1) infinite;
-  }
-  .lds-facebook div:nth-child(1) {
-    left: 8px;
-    animation-delay: -0.24s;
-  }
-  .lds-facebook div:nth-child(2) {
-    left: 32px;
-    animation-delay: -0.12s;
-  }
-  .lds-facebook div:nth-child(3) {
-    left: 56px;
-    animation-delay: 0;
-  }
-  @keyframes lds-facebook {
-    0% {
-      top: 8px;
-      height: 64px;
-    }
-    50%, 100% {
-      top: 24px;
-      height: 32px;
-    }
-  }
+.loading-container {
+  width: 100%;
+  flex-grow: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}

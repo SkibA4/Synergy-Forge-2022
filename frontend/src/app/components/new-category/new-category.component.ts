@@ -58,7 +58,7 @@ export class NewCategoryComponent implements OnInit, OnDestroy {
     const category = this.fb.group({
       name: [this.categoryForm.controls.name.value],
       cost: [this.categoryForm.controls.cost.value],
-      procent: [this.categoryForm.controls.procent.value + "%"],
+      procent: [this.categoryForm.controls.procent.value + '%'],
     });
 
     this.addCategory.emit(category);

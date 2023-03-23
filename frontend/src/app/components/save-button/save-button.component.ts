@@ -1,4 +1,4 @@
-import { Component, Input} from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { MakeRequestService } from 'src/app/services/make-request.service';
 
 @Component({
@@ -7,9 +7,7 @@ import { MakeRequestService } from 'src/app/services/make-request.service';
   styleUrls: ['./save-button.component.scss'],
 })
 export class SaveButtonComponent {
-
   constructor(private requestService: MakeRequestService) {}
 
   @Input() buttonType!: String;
-
 }

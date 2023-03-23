@@ -1,27 +1,75 @@
-<app-header [isActive]="true" [integration]="detailsData$"></app-header>
+<app-header
+  [isActive]="true"
+  [integration]="integrationData"
+  (saveEmitter)="save()"
+></app-header>
 
-<span *ngIf="detailState$ | async; else loading">
-  <div class="info">
-    <div class="header">
-      <h1>Wersja główna</h1>
+<div [ngClass]="saveAlert ? 'saved' : 'saved saved-disable'">
+  <p>Zapisano</p>
+</div>
+
+<div class="container" *ngIf="detailState$ | async; else loading">
+  <div class="versions">
+    <div class="versions__main">
+      <div class="versions__header">
+        <h1>Wersja główna</h1>
+      </div>
+      <div class="versions__underline"></div>
+      <div class="versions__content">
+        <app-details-form
+          [budget]="getMainBudget()"
+          (delete)="deleteBudget()"
+          (duplicate)="duplicate()"
+        ></app-details-form>
+      </div>
     </div>
-    <div class="underline"></div>
-    <div class="switches">
-      <button>Wersja</button>
-      <button>Wersja</button>
-      <button>Wersja</button>
-      <button>Wersja</button>
+
+    <div class="versions__others">
+      <div class="versions__switches">
+        <span *ngFor="let version of integrationData.budgets; index as i">
+          <button
+            type="button"
+            [ngClass]="
+              i === activeIndex
+                ? 'versions__switch--active'
+                : 'versions__switch'
+            "
+            *ngIf="!integrationData.budgets[i].mainBudget"
+            (click)="setActiveVersion(i)"
+          >
+            {{ version.name }}
+          </button>
+        </span>
+      </div>
+      <div
+        class="versions__content"
+        *ngIf="integrationData.budgets.length !== 1; else noVersions"
+      >
+        <app-details-form
+          [budget]="integrationData.budgets[activeIndex]"
+          (main)="setMain()"
+        ></app-details-form>
+      </div>
     </div>
   </div>
-  <div class="underline"></div>
-</span>
+</div>
 
 <ng-template #loading>
-  <div class="container">
+  <div class="loading-container">
     <div class="lds-facebook">
       <div></div>
       <div></div>
       <div></div>
     </div>
+  </div>
+</ng-template>
+
+<ng-template #noVersions>
+  <div class="version_switches" style="background-color: white"></div>
+  <div
+    class="versions__content"
+    style="display: flex; align-items: center; justify-content: center"
+  >
+    <h1>Brak innych opcji do porównania</h1>
   </div>
 </ng-template>

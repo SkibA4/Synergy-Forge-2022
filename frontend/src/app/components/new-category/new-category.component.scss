@@ -1,5 +1,5 @@
-input[type='number'] {
-  -moz-appearance:textfield;
+input[type="number"] {
+  -moz-appearance: textfield;
 }
 
 input::-webkit-outer-spin-button,
@@ -8,17 +8,17 @@ input::-webkit-inner-spin-button {
 }
 
 .new-category {
-    background: #EFEAF5 0% 0% no-repeat padding-box;
-    padding: 10px 20px;
-    .fields {
-        display: flex;
-        justify-content: space-around;
-        flex-wrap: wrap;
+  background: #efeaf5 0% 0% no-repeat padding-box;
+  padding: 10px 20px;
+  .fields {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
 
-        mat-form-field {
-            min-width: 30%;
-        }
+    mat-form-field {
+      min-width: 30%;
     }
+  }
 }
 
 button {

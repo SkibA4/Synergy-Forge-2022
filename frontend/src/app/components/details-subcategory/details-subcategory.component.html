@@ -1,0 +1,76 @@
+<li [ngClass]="subcategoryState ? 'category li__shown' : 'category'">
+  <div class="category__info">
+    <div class="icon-name" style="display: flex; align-items: center">
+      <button class="category__icon" (click)="setSubcategoryState()">
+        <i class="bx bx-chevron-down" *ngIf="!subcategoryState"></i>
+        <i class="bx bx-chevron-up" *ngIf="subcategoryState"></i>
+      </button>
+      <h1>{{ category.name }}</h1>
+    </div>
+    <p>{{ percent }}% ({{ totalPrice }}zł / {{ category.cost }}zł)</p>
+  </div>
+  <div class="category__bar">
+    <mat-progress-bar
+      *ngIf="percent >= 100"
+      mode="determinate"
+      [value]="percent"
+      class="category__progress"
+      color="accent"
+    ></mat-progress-bar>
+    <mat-progress-bar
+      *ngIf="percent < 100"
+      mode="determinate"
+      [value]="percent"
+      class="category__progress"
+    ></mat-progress-bar>
+    <button type="button" (click)="setSubcategoryState()">+</button>
+  </div>
+
+  <div class="subcategories" *ngIf="subcategoryState">
+    <div class="subcategories__info">
+      <div class="subcategories__inputs">
+        <div class="subcategories__inputgroup">
+          <label for="name">Nazwa</label>
+          <input
+            type="text"
+            class="subcategories__input"
+            (keyup)="setValues($event, true)"
+            name="name"
+            #input
+          />
+        </div>
+
+        <div class="subcategories__inputgroup">
+          <label for="cost">Koszt</label>
+          <input
+            type="number"
+            class="subcategories__input"
+            (keyup)="setValues($event, false)"
+            name="cost"
+            #input
+          />
+        </div>
+      </div>
+      <button
+        type="button"
+        class="subcategories__button"
+        (click)="addSubcategory()"
+      >
+        Ok
+      </button>
+    </div>
+    <ul class="subcategories__ul">
+      <li *ngFor="let subcategory of category.subcategories; index as i">
+        <div class="subcategories__paragraphs">
+          <p style="border-right: 2px solid #efeaf5; padding-right: 1rem">
+            {{ subcategory.name }}
+          </p>
+          <p style="padding-left: 1rem">{{ subcategory.cost }}zł</p>
+        </div>
+        <button type="button" (click)="deleteSubcategory(i)">
+          <i class="bx bx-trash"></i>
+        </button>
+      </li>
+    </ul>
+  </div>
+</li>

@@ -1,9 +1,7 @@
 import { HttpClient, HttpResponse } from '@angular/common/http';
 import { Injectable, OnInit } from '@angular/core';
 import { BehaviorSubject, Observable } from 'rxjs';
-import { CheckBackend } from '../interfaces/check-backend';
 import { Integrations } from '../interfaces/integrations';
-import { FormGroup } from '@angular/forms';
 import { Router } from '@angular/router';
 
 @Injectable({
@@ -45,6 +43,7 @@ export class MakeRequestService {
 
   public deleteIntegration(index: number) {
     return this.http.delete<Integrations[]>(
-      `http://localhost/integrations/${index}`);
+      `http://localhost/integrations/${index}`
+    );
   }
 }

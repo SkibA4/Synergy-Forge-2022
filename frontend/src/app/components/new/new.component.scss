@@ -1,5 +1,5 @@
-input[type='number'] {
-  -moz-appearance:textfield;
+input[type="number"] {
+  -moz-appearance: textfield;
 }
 
 input::-webkit-outer-spin-button,
@@ -29,7 +29,7 @@ input::-webkit-inner-spin-button {
       mat-form-field {
         margin-bottom: -1.25em;
         padding: 10px;
-        min-width: 30%
+        min-width: 30%;
       }
 
       margin-bottom: 50px;
@@ -42,7 +42,6 @@ input::-webkit-inner-spin-button {
       flex-grow: 1;
       overflow: auto;
     }
-
   }
 
   .right {
@@ -55,11 +54,11 @@ input::-webkit-inner-spin-button {
       box-shadow: 0px 3px 10px #0000001f;
       border-radius: 10px;
       flex-grow: 1;
-      padding: 20px; 
+      padding: 20px;
 
       mat-form-field {
         width: 100%;
-      }     
+      }
     }
   }
 }
@@ -153,11 +152,9 @@ mat-icon {
 @media only screen and (max-width: 768px) {
   .new-form {
     flex-direction: column;
-    
+
     .left {
       width: auto;
-
-      
     }
 
     .right {

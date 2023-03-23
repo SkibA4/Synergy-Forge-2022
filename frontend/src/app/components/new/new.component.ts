@@ -17,7 +17,6 @@ import { MakeRequestService } from 'src/app/services/make-request.service';
   styleUrls: ['./new.component.scss'],
 })
 export class NewComponent implements OnInit {
-
   public integrationForm = this.fb.group({
     name: ['', Validators.required],
     imgUrl: [''],
@@ -30,7 +29,12 @@ export class NewComponent implements OnInit {
     categories: this.fb.array([], ArrayValidator.minLength(1)),
   });
 
-  public displayedColumns: String[] = ['kategoria', 'koszt', 'procent', 'delete'];
+  public displayedColumns: String[] = [
+    'kategoria',
+    'koszt',
+    'procent',
+    'delete',
+  ];
 
   public dataSource!: MatTableDataSource<AbstractControl>;
 
@@ -42,7 +46,10 @@ export class NewComponent implements OnInit {
 
   public categoryFormState = false;
 
-  constructor(private fb: FormBuilder, private requestService: MakeRequestService) {}
+  constructor(
+    private fb: FormBuilder,
+    private requestService: MakeRequestService
+  ) {}
 
   @ViewChild(MatTable) table!: MatTable<any>;
 

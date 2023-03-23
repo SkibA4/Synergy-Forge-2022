@@ -16,15 +16,16 @@ export class DashboardComponent implements OnInit {
   constructor(private request: MakeRequestService, private router: Router) {}
 
   ngOnInit() {
-    this.request.getIntegrations().subscribe((data) => {
-      this.integrationsData = [...data];
-      this.integrations$.next(true);
-      console.log(this.integrationsData)
-    });
+    setTimeout(() => {
+      this.request.getIntegrations().subscribe((data) => {
+        this.integrationsData = [...data];
+        this.integrations$.next(true);
+      });
+    }, 1000);
   }
 
   public getBackendState() {
-    return this.request.backend
+    return this.request.backend;
   }
 
   public getIntegrationsData() {
@@ -33,10 +34,10 @@ export class DashboardComponent implements OnInit {
 
   public deleteIntegration(index: number) {
     this.integrations$.next(false);
-    this.request.deleteIntegration(index).subscribe(response => {
+    this.request.deleteIntegration(index).subscribe((response) => {
       this.integrationsData = [...response];
       this.integrations$.next(true);
-    }) 
+    });
   }
 
   public navigateToDetails(index: number) {
